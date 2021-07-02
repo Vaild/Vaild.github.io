@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://va1id.top').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="在re包中match方法里面对字符串匹配之前的  r‘ab*’  r是什么意思： r是表示原字符串的意思，比如出现r‘\n’直接匹配\n而不是匹配回车，如果不加r的话：‘\\n’">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20200926正则-异常捕捉-数据集划分方法">
+<meta property="og:url" content="http://va1id.top/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Va1id">
+<meta property="og:description" content="在re包中match方法里面对字符串匹配之前的  r‘ab*’  r是什么意思： r是表示原字符串的意思，比如出现r‘\n’直接匹配\n而不是匹配回车，如果不加r的话：‘\\n’">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/09/30/1AxygKfmTN6qvDc.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/26/j6EmQXgpP82Y5aO.png">
+<meta property="og:image" content="https://i.loli.net/2020/09/26/t25zjbsnLWJSedX.png">
+<meta property="article:published_time" content="2020-09-30T07:08:25.000Z">
+<meta property="article:modified_time" content="2020-09-30T07:10:06.212Z">
+<meta property="article:author" content="Va1id">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/09/30/1AxygKfmTN6qvDc.png">
+
+<link rel="canonical" href="http://va1id.top/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>20200926正则-异常捕捉-数据集划分方法 | Va1id</title>
+  
+
+
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?6c32b36a4183a2dd76aaedfae72afd98";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Va1id</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20200926正则-异常捕捉-数据集划分方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-30 15:08:25 / 修改时间：15:10:06" itemprop="dateCreated datePublished" datetime="2020-09-30T15:08:25+08:00">2020-09-30</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/30/20200926正则-异常捕捉-数据集划分方法/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在re包中match方法里面对字符串匹配之前的  r‘ab*’  r是什么意思：</p>
+<p>r是表示原字符串的意思，比如出现r‘\n’直接匹配\n而不是匹配回车，如果不加r的话：‘\\n’</p>
+<span id="more"></span>
+
+<p>\w—-匹配字母数字下划线——相当于[a-zA-Z0-9_]</p>
+<p>|—–指明两项之间的一个选择。要匹配 |，请使用 |</p>
+<p>* —-匹配前面的子表达式，零次或者多次例，zo*–z， zo， zoo， zoo~</p>
+<p>+ —-匹配前面的子表达式，一次或者是多次，zo+ – zo， zoo，zooo~</p>
+<p>？—-匹配零次或者是一次， do(es)?–do, does</p>
+<p>{n}—-匹配确定的n次</p>
+<p>{n, }—-至少匹配n次</p>
+<p>{n, m}—-最少匹配n次最多匹配m次</p>
+<p>^ —- 匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 ^</p>
+<h3 id="补习正则表达式"><a href="#补习正则表达式" class="headerlink" title="补习正则表达式"></a>补习正则表达式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有坑待填。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字符串操作："><a href="#字符串操作：" class="headerlink" title="字符串操作："></a>字符串操作：</h3><p>strings.enswith(‘.py’)—–判断字符串strings是不是以.py结尾的</p>
+<h3 id="类当中的对象属性："><a href="#类当中的对象属性：" class="headerlink" title="类当中的对象属性："></a>类当中的对象属性：</h3><p>__init__()当中的对象属性是对类中所有的函数而言都可以用的</p>
+<p>除了__init__()函数之外的其他函数，当中定义了对象的属性，工作域只能是在该函数内部，或者是当该函数被调用的时候，或者作回调的时候可以将该属性向下传递，但是工作空间也不超过该调用函数。</p>
+<h3 id="python执行时带参数"><a href="#python执行时带参数" class="headerlink" title="python执行时带参数"></a>python执行时带参数</h3><p>用python执行之后的所有的东西都被识别为参数，并保存到列表当中，所以就可以通过列表来进行读取执行时所带的参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件名为sys_test.py</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.argv)</span><br><span class="line"></span><br><span class="line">执行时的代码：</span><br><span class="line">python sys_test.py <span class="number">123</span> <span class="number">456</span> <span class="number">789</span></span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line">[<span class="string">&#x27;sys_test.py&#x27;</span>, <span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;456&#x27;</span>, <span class="string">&#x27;789&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串变为字典：eval（string）"><a href="#字符串变为字典：eval（string）" class="headerlink" title="字符串变为字典：eval（string）"></a>字符串变为字典：eval（string）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在文件当中一个字典保存的形式是</span><br><span class="line">file</span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">	&#x27;</span>a<span class="string">&#x27;: 123,</span></span><br><span class="line"><span class="string">	&#x27;</span><span class="string">b&#x27;: 456,</span></span><br><span class="line"><span class="string">	&#x27;</span>c<span class="string">&#x27;: 789</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line">file_reader = <span class="built_in">open</span>(<span class="string">&#x27;./file&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">string_dict = file_reader.read()</span><br><span class="line">dict_str = <span class="built_in">eval</span>(string_dict)</span><br><span class="line"></span><br><span class="line">dict_str = &#123;</span><br><span class="line">	<span class="string">&#x27;a&#x27;</span>: <span class="number">123</span>,</span><br><span class="line">	<span class="string">&#x27;b&#x27;</span>: <span class="number">456</span>,</span><br><span class="line">	<span class="string">&#x27;c&#x27;</span>: <span class="number">789</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="import-函数-与-getattr自省函数"><a href="#import-函数-与-getattr自省函数" class="headerlink" title="__import__函数   与   getattr自省函数"></a>__import__函数   与   getattr自省函数</h3><p>getattr方法主要的作用就是实现反射机制， 也就是说通过字符串获取方法实例， 这样的话，就可以将一个类可能调用的方法放在配置文件里，在需要的时候动态的加载出来。</p>
+<h3 id="关于异常捕捉的几种形式的区别："><a href="#关于异常捕捉的几种形式的区别：" class="headerlink" title="关于异常捕捉的几种形式的区别："></a>关于异常捕捉的几种形式的区别：</h3><h4 id="try-except"><a href="#try-except" class="headerlink" title="try/except"></a>try/except</h4><p><img src="https://i.loli.net/2020/09/30/1AxygKfmTN6qvDc.png" alt="image-20200926160115865"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">一个<span class="keyword">except</span>子句可以同时处理多个异常，这些异常将被放在一个括号里成为一个元组</span><br><span class="line">最后一个<span class="keyword">except</span>子句可以忽略异常的名称，它将被当作通配符使用</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="try-except…else"><a href="#try-except…else" class="headerlink" title="try/except…else"></a>try/except…else</h4><p><img src="https://i.loli.net/2020/09/26/j6EmQXgpP82Y5aO.png" alt="image-20200926160300927"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 else 子句比把所有的语句都放在 try 子句里面要好，这样可以避免一些意想不到，而 except 又无法捕获的异常。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="try-finally"><a href="#try-finally" class="headerlink" title="try-finally"></a>try-finally</h4><p><img src="https://i.loli.net/2020/09/26/t25zjbsnLWJSedX.png" alt="image-20200926160443127"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="comment"># 发生异常执行的代码</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 未发生异常时执行的代码</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="comment"># 无论是否发生异常都要执行的代码</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="分行读取大文件："><a href="#分行读取大文件：" class="headerlink" title="分行读取大文件："></a>分行读取大文件：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./test&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">        <span class="built_in">print</span>(line.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><blockquote>
+<p>单词词典和倒排文件</p>
+</blockquote>
+<h4 id="倒排文件"><a href="#倒排文件" class="headerlink" title="倒排文件"></a>倒排文件</h4><p>所有单词的倒排列表顺序的存储在磁盘的某个文件当中，是存储倒排索引的物理文件。</p>
+<h4 id="单词字典"><a href="#单词字典" class="headerlink" title="单词字典"></a>单词字典</h4><p>文档集合中出现过的所有的单词构成的一个所有字符串的集合（意味着没有重复），但此次点内的每一条的索引项，都记载单词本身的一些信息以及指向倒排列表的指针。</p>
+<p>查询过程：根据用户的查询，现在单词字典中查询单词，再指向单词所对应的倒排列表在倒排文件中的位置</p>
+<p>具体原理待补充</p>
+<h3 id="训练集与测试集划分方法："><a href="#训练集与测试集划分方法：" class="headerlink" title="训练集与测试集划分方法："></a>训练集与测试集划分方法：</h3><p>留出法：</p>
+<p>交叉验证法：</p>
+<p>自助法：对于数据集较小难以有效的划分训练/测试集比较有用，自助法能从初始的数据集中产生多个不同的训练集，对于集成学习有很大的好处。 改变了数据集的分布，会引入估计偏差。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Va1id
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://va1id.top/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/" title="20200926正则-异常捕捉-数据集划分方法">http://va1id.top/2020/09/30/20200926正则-异常捕捉-数据集划分方法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/25/20200925-%E9%97%AD%E5%8C%85%E8%A3%85%E9%A5%B0%E5%99%A8%E4%B8%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="prev" title="20200925-闭包装饰器与回调函数">
+      <i class="fa fa-chevron-left"></i> 20200925-闭包装饰器与回调函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/05/%E5%B9%82%E5%BE%8B%E5%88%86%E5%B8%83%E6%A0%B7%E6%9C%AC%E7%94%9F%E6%88%90%E5%8F%8A%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/" rel="next" title="幂律分布样本生成及参数估计">
+      幂律分布样本生成及参数估计 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">补习正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">字符串操作：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%BD%93%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">类当中的对象属性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E6%89%A7%E8%A1%8C%E6%97%B6%E5%B8%A6%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">python执行时带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E4%B8%BA%E5%AD%97%E5%85%B8%EF%BC%9Aeval%EF%BC%88string%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">字符串变为字典：eval（string）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import-%E5%87%BD%E6%95%B0-%E4%B8%8E-getattr%E8%87%AA%E7%9C%81%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">__import__函数   与   getattr自省函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">关于异常捕捉的几种形式的区别：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#try-except"><span class="nav-number">7.1.</span> <span class="nav-text">try&#x2F;except</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-except%E2%80%A6else"><span class="nav-number">7.2.</span> <span class="nav-text">try&#x2F;except…else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-finally"><span class="nav-number">7.3.</span> <span class="nav-text">try-finally</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E8%A1%8C%E8%AF%BB%E5%8F%96%E5%A4%A7%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-number">8.</span> <span class="nav-text">分行读取大文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="nav-number">9.</span> <span class="nav-text">倒排索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%92%E6%8E%92%E6%96%87%E4%BB%B6"><span class="nav-number">9.1.</span> <span class="nav-text">倒排文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E8%AF%8D%E5%AD%97%E5%85%B8"><span class="nav-number">9.2.</span> <span class="nav-text">单词字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E9%9B%86%E4%B8%8E%E6%B5%8B%E8%AF%95%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">10.</span> <span class="nav-text">训练集与测试集划分方法：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Va1id"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Va1id</p>
+  <div class="site-description" itemprop="description">记录转行这一路的艰辛，做计算机和数据结构学习的分享者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vaild" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vaild" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sinvalid@icloud.com" title="E-Mail → sinvalid@icloud.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Va1id</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" 
+src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js">
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://valid.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "http://va1id.top/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/",
+            identifier: "2020/09/30/20200926正则-异常捕捉-数据集划分方法/",
+            title: "20200926正则-异常捕捉-数据集划分方法"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://valid.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://va1id.top').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="这周主要做了两件事情  复杂网络 分别学习深度学习、强化学习 关于研究方向的一些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20210311周报">
+<meta property="og:url" content="http://va1id.top/2021/03/11/20210311%E5%91%A8%E6%8A%A5/index.html">
+<meta property="og:site_name" content="Va1id">
+<meta property="og:description" content="这周主要做了两件事情  复杂网络 分别学习深度学习、强化学习 关于研究方向的一些">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-11T00:59:42.000Z">
+<meta property="article:modified_time" content="2021-03-19T01:06:32.833Z">
+<meta property="article:author" content="Va1id">
+<meta property="article:tag" content="周报">
+<meta property="article:tag" content="复杂网络">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://va1id.top/2021/03/11/20210311%E5%91%A8%E6%8A%A5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>20210311周报 | Va1id</title>
+  
+
+
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?6c32b36a4183a2dd76aaedfae72afd98";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Va1id</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/03/11/20210311%E5%91%A8%E6%8A%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20210311周报
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-11 08:59:42" itemprop="dateCreated datePublished" datetime="2021-03-11T08:59:42+08:00">2021-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-19 09:06:32" itemprop="dateModified" datetime="2021-03-19T09:06:32+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%91%A8%E6%8A%A5/" itemprop="url" rel="index">
+                    <span itemprop="name">周报</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/03/11/20210311%E5%91%A8%E6%8A%A5/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/11/20210311周报/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这周主要做了两件事情</p>
+<ul>
+<li>复杂网络</li>
+<li>分别学习深度学习、强化学习</li>
+<li>关于研究方向的一些</li>
+</ul>
+<hr>
+<span id="more"></span>
+
+<h2 id="复杂网络"><a href="#复杂网络" class="headerlink" title="复杂网络"></a>复杂网络</h2><p>通过看巴拉巴西网络科学这本书，沿着过去的复杂网络研究思路，寻找复杂网络每一次研究突破的动力所在，我主要关注的点在于：</p>
+<ul>
+<li>基于前人的模型提出什么样的问题</li>
+<li>通过什么样的方法解决当时模型所遇到的问题，基于此提出什么新的模型</li>
+</ul>
+<h3 id="随机网络"><a href="#随机网络" class="headerlink" title="随机网络"></a>随机网络</h3><h4 id="高度聚团与小世界"><a href="#高度聚团与小世界" class="headerlink" title="高度聚团与小世界"></a>高度聚团与小世界</h4><ul>
+<li>人们观察到，在真实的网络上会出现平均路径比较小的这种情况</li>
+<li>解决：提出了小世界模型。</li>
+</ul>
+<h3 id="枢纽节点与幂律"><a href="#枢纽节点与幂律" class="headerlink" title="枢纽节点与幂律"></a>枢纽节点与幂律</h3><ul>
+<li><p>在真实网络中发现了一小部分的枢纽节点，同时发现节点的度分布是满足幂律分布，这是通过之前的随机理论解释不了的，</p>
+</li>
+<li><p>发现问题：我们忽视了随机网络中两个假设：</p>
+<ol>
+<li>网络节点的数目确定</li>
+<li>所有的节点都是相同的</li>
+</ol>
+</li>
+<li><p>解决方法：基于对于以上两个假设的理解：加入生长与偏好链接的机制，这里的生长是网络节点与链接都生长，而偏好连接，则是将节点看作是不同的个体，获得连接的能力不同。</p>
+</li>
+<li><p>建立的<strong>BA无标度网络</strong></p>
+</li>
+<li><p>产生的影响：早加入的节点因，在获取连接的能力会比新节点有明显的优势，老节点会成为枢纽节点，而<strong>新加入的节点不可能成为枢纽节点</strong></p>
+</li>
+</ul>
+<h3 id="退化"><a href="#退化" class="headerlink" title="退化"></a>退化</h3><ul>
+<li>问题：<ol>
+<li>BA无标度网络中，网络节点与网络的链接一直处于增加的状态，但是在真实的网络当中也存在着网络节点与链接的消失，或者是随着年龄的增长节点获取链接的能力变差甚至会失去某些链接。</li>
+<li>在增长的过程中，可能不一定只有新增节点产生链接，有些之前存在的节点也可能与老节点产生链接，也就是内部连接。</li>
+</ol>
+</li>
+<li>解决方法：后来出现了<strong>BA扩展模型</strong>（Luis Amaral）给节点加上了年龄限制，让节点可以退休甚至可以停止获取连接。</li>
+<li>产生的影响：（Sergey Dorogovtsev）扩展模型所提出的老化并没有破坏幂律，只是改变了度分布，就是枢纽节点会发生改变</li>
+</ul>
+<h3 id="后来者居上-新节点能成为枢纽节点"><a href="#后来者居上-新节点能成为枢纽节点" class="headerlink" title="后来者居上(新节点能成为枢纽节点)"></a>后来者居上(新节点能成为枢纽节点)</h3><ul>
+<li>问题：在很多现在的网络中，都会出现新出现不久的节点获取连接的速度和数量与之前的模型存在相违背的地方，甚至能很快的成长为枢纽节点。</li>
+<li>解决方法：引入了适应度的竞争形势，来改进模型，以适应度*连接的度进行偏好连接的度量</li>
+<li>产生的影响：适应度甚至可以主导网络中的一切，打破和制造新的枢纽节点。在无尺度模型中，网络中节点的连接度按照时间的平方根增长，但是在引入适应度之后每个节点增长的速度不再遵循以上的规律。</li>
+</ul>
+<h3 id="适应度引入引出的问题以及带来的影响"><a href="#适应度引入引出的问题以及带来的影响" class="headerlink" title="适应度引入引出的问题以及带来的影响"></a>适应度引入引出的问题以及带来的影响</h3><ul>
+<li>问题：在无尺度模型中，网络中节点的连接度按照时间的平方根增长，但是在引入适应度之后每个节点增长的速度不再遵循以上的规律。每个节点的平衡被打破，幂律能否出现？有这种竞争所驱使的模型还是不是无尺度模型？</li>
+<li>研究发现，由适应度这种竞争模式，将网络分成了两种：<ol>
+<li>无尺度依然存在，表现为富者愈富，适应度大的成为最大的枢纽节点</li>
+<li>适应度大的节点占有几乎所有的链接。可以通过玻色-爱因斯坦凝聚来解释这种现象。</li>
+</ol>
+</li>
+</ul>
+<h3 id="一些感想"><a href="#一些感想" class="headerlink" title="一些感想"></a>一些感想</h3><p>刚刚读到这里，因为枢纽节点与幂律问题的发现，将网络的研究从静态网络带入到不断增长演化的动态网络，从动态网络又衍生出更多的问题，可以发现复杂网络的发展是随着不断的提出原有模型的问题，并不断的解决这些问题，也是不断让模型更好的拟合现实复杂网络的过程。从这个过程中，也不难发现，这些问题的提出与解决方法的提出，都是前人善于观察的结果，不断的发现我们模型与现实网络的差距，不断将现实网络的演化抽象到模型的过程。我认为我目前还是比较缺乏这种发现问题的能力。</p>
+<h2 id="深度学习、强化学习–笔记"><a href="#深度学习、强化学习–笔记" class="headerlink" title="深度学习、强化学习–笔记"></a>深度学习、强化学习–<a target="_blank" rel="noopener" href="https://github.com/Vaild/Notes/blob/main/DL-%E5%AD%A6%E4%B9%A0.md">笔记</a></h2><h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><ul>
+<li>学习了利用tensorflow的建立一个简单的可训练深度神经网络模型</li>
+<li>利用sklearn里面的加利福尼亚州房价预测数据集 和 tensorflow的fashion_mnist数据集分别进行了回归与分类问题的简单实践</li>
+<li>网格化寻找最优超参数</li>
+<li>自定义损失函数、自定义神经网络层，实现简单的wide&amp;deep模型</li>
+<li>学习卷积神经网络CNN，简单实现对fashion_mnist数据集的图片分类， 练习了kaggle上的10-monkeys分类问题</li>
+<li>学习tensorflow上restnet50使用，并使用10-monkeys问题进行实践。</li>
+</ul>
+<h3 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h3><ul>
+<li>有模型学习算法，通过我们一直的状态转移函数，也就是对于所面对的环境已知的时候，优化价值函数</li>
+<li>无模型学习算法，sarsa和QLearning，这两个看了一下理论，还没有完全看明白。</li>
+</ul>
+<h2 id="关于研究方向"><a href="#关于研究方向" class="headerlink" title="关于研究方向"></a>关于研究方向</h2><ol>
+<li>在读一篇集智俱乐部的老文章的时候，了解到自动建模已经有所研究，比如通过RNN、图神经网络等，所以接下来会去读一下这个方面的论文，来对复杂网络的建模有更深一步的了解。</li>
+<li>意识到，深度强化学习在电网调度方面有比较多的应用，我想在进行电网调度的时候，有没有可能会对复杂的电网进行建模，所以即将沿着这个方向看看论文不知道能不能有所收获。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Va1id
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://va1id.top/2021/03/11/20210311%E5%91%A8%E6%8A%A5/" title="20210311周报">http://va1id.top/2021/03/11/20210311周报/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag"># 周报</a>
+              <a href="/tags/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/" rel="tag"># 复杂网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/29/Nodexl%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8A%A0%E6%9D%83%E9%87%8D/" rel="prev" title="Nodexl基本使用与加权重">
+      <i class="fa fa-chevron-left"></i> Nodexl基本使用与加权重
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/19/20210318%E5%91%A8%E6%8A%A5/" rel="next" title="20210318周报">
+      20210318周报 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">复杂网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">1.1.</span> <span class="nav-text">随机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E5%BA%A6%E8%81%9A%E5%9B%A2%E4%B8%8E%E5%B0%8F%E4%B8%96%E7%95%8C"><span class="nav-number">1.1.1.</span> <span class="nav-text">高度聚团与小世界</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%A2%E7%BA%BD%E8%8A%82%E7%82%B9%E4%B8%8E%E5%B9%82%E5%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">枢纽节点与幂律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">退化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E6%9D%A5%E8%80%85%E5%B1%85%E4%B8%8A-%E6%96%B0%E8%8A%82%E7%82%B9%E8%83%BD%E6%88%90%E4%B8%BA%E6%9E%A2%E7%BA%BD%E8%8A%82%E7%82%B9"><span class="nav-number">1.4.</span> <span class="nav-text">后来者居上(新节点能成为枢纽节点)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E5%BA%94%E5%BA%A6%E5%BC%95%E5%85%A5%E5%BC%95%E5%87%BA%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">1.5.</span> <span class="nav-text">适应度引入引出的问题以及带来的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%84%9F%E6%83%B3"><span class="nav-number">1.6.</span> <span class="nav-text">一些感想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E2%80%93%E7%AC%94%E8%AE%B0"><span class="nav-number">2.</span> <span class="nav-text">深度学习、强化学习–笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.1.</span> <span class="nav-text">深度学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.2.</span> <span class="nav-text">强化学习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-number">3.</span> <span class="nav-text">关于研究方向</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Va1id"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Va1id</p>
+  <div class="site-description" itemprop="description">记录转行这一路的艰辛，做计算机和数据结构学习的分享者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vaild" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vaild" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sinvalid@icloud.com" title="E-Mail → sinvalid@icloud.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Va1id</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" 
+src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js">
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://valid.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "http://va1id.top/2021/03/11/20210311%E5%91%A8%E6%8A%A5/",
+            identifier: "2021/03/11/20210311周报/",
+            title: "20210311周报"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://valid.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
