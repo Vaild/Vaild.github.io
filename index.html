@@ -191,6 +191,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">01背包问题简单总结</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-29 23:22:07 / 修改时间：23:23:05" itemprop="dateCreated datePublished" datetime="2022-03-29T23:22:07+08:00">2022-03-29</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/29/01背包问题简单总结/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="01背包问题总结"><a href="#01背包问题总结" class="headerlink" title="01背包问题总结"></a>01背包问题总结</h2><blockquote>
+<p>每个物品只能用一次</p>
+</blockquote>
+<p>包括组合问题，排列问题。</p>
+<p><strong>遍历顺序模板</strong></p>
+<p>一般的<code>dp</code>数组定义是：</p>
+<ul>
+<li>容量为<code>j</code>的背包的可以凑成的子集的总和</li>
+<li>容量为<code>j</code>的背包的可以凑成的目标和的个数</li>
+</ul>
+<p><u><strong>一般是先遍历物品，再遍历背包，而且因为每个物品只能放入一次，所以背包从后向前遍历</strong></u></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stones.length; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = bagsize; j &gt;= stones[i]; j--)&#123;</span><br><span class="line">       <span class="comment">// dp[j] = Math.max(dp[j], dp[j-stones[i]] + stones[i]);</span></span><br><span class="line">       <span class="comment">// 状态转移公式</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="普通01背包问题"><a href="#普通01背包问题" class="headerlink" title="普通01背包问题"></a>普通01背包问题</h3><p><strong>状态转移公式一般为：</strong> <code>dp[j] = Math.max(dp[j], dp[j-nums[i]] + nums[i])</code></p>
+<h4 id="416-分割等和子集"><a href="#416-分割等和子集" class="headerlink" title="416. 分割等和子集"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">416. 分割等和子集</a></h4><ul>
+<li><code>dp</code>数组含义是，在容量为<code>i</code>的背包中，能装下的最多东西是<code>dp[i]</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span> (sum % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> bagsize = sum / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[bagsize+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = bagsize; j &gt;= nums[i]; j--)&#123;</span><br><span class="line">                dp[j] = Math.max(dp[j], dp[j-nums[i]]+ nums[i]);</span><br><span class="line">                <span class="keyword">if</span> (dp[j] == bagsize)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1049-最后一块石头的重量-II"><a href="#1049-最后一块石头的重量-II" class="headerlink" title="1049. 最后一块石头的重量 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/last-stone-weight-ii/">1049. 最后一块石头的重量 II</a></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lastStoneWeightII</span><span class="params">(<span class="keyword">int</span>[] stones)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stones.length; i++) sum += stones[i];</span><br><span class="line">        <span class="keyword">int</span> bagsize = sum / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[bagsize + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stones.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = bagsize; j &gt;= stones[i]; j--)&#123;</span><br><span class="line">                dp[j] = Math.max(dp[j], dp[j-stones[i]] + stones[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.abs(sum - <span class="number">2</span> * dp[bagsize]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="01背包组合问题"><a href="#01背包组合问题" class="headerlink" title="01背包组合问题"></a>01背包组合问题</h3><p>就是有多少种情况的。</p>
+<p><strong>状态转移公式一般为：</strong> <code>dp[j] = dp[j] + dp[j-nums[i]]</code></p>
+<h4 id="494-目标和"><a href="#494-目标和" class="headerlink" title="494. 目标和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/target-sum/">494. 目标和</a></h4><ul>
+<li>dp含义： 在背包容量是<code>i</code>的背包中，填满<code>i</code>有<code>dp[i]</code>种方法。</li>
+<li>初始化：dp[0]  = 1，填满0的背包只有一种方法，什么也不装。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findTargetSumWays</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        target = Math.abs(target);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) sum += nums[i];</span><br><span class="line">        <span class="keyword">if</span> ((sum + target) % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> bagsize = (sum + target) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[bagsize + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>; </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = bagsize; j &gt;= nums[i]; j--)&#123;</span><br><span class="line">                dp[j] = dp[j] + dp[j-nums[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[bagsize];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -947,109 +1056,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/03/11/20210311%E5%91%A8%E6%8A%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/11/20210311%E5%91%A8%E6%8A%A5/" class="post-title-link" itemprop="url">20210311周报</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-11 08:59:42" itemprop="dateCreated datePublished" datetime="2021-03-11T08:59:42+08:00">2021-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-19 09:06:32" itemprop="dateModified" datetime="2021-03-19T09:06:32+08:00">2021-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%91%A8%E6%8A%A5/" itemprop="url" rel="index">
-                    <span itemprop="name">周报</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/03/11/20210311%E5%91%A8%E6%8A%A5/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/11/20210311周报/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这周主要做了两件事情</p>
-<ul>
-<li>复杂网络</li>
-<li>分别学习深度学习、强化学习</li>
-<li>关于研究方向的一些</li>
-</ul>
-<hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/11/20210311%E5%91%A8%E6%8A%A5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1122,7 +1128,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1135,7 +1141,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1171,7 +1177,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
