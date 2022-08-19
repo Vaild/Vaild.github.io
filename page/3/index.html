@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -191,6 +191,268 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">20200926正则-异常捕捉-数据集划分方法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-30 15:08:25" itemprop="dateCreated datePublished" datetime="2020-09-30T15:08:25+08:00">2020-09-30</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/30/20200926正则-异常捕捉-数据集划分方法/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在re包中match方法里面对字符串匹配之前的  r‘ab*’  r是什么意思：</p>
+<p>r是表示原字符串的意思，比如出现r‘\n’直接匹配\n而不是匹配回车，如果不加r的话：‘\\n’</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/30/20200926%E6%AD%A3%E5%88%99-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/09/25/20200925-%E9%97%AD%E5%8C%85%E8%A3%85%E9%A5%B0%E5%99%A8%E4%B8%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/25/20200925-%E9%97%AD%E5%8C%85%E8%A3%85%E9%A5%B0%E5%99%A8%E4%B8%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">20200925-闭包装饰器与回调函数</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-25 15:04:53" itemprop="dateCreated datePublished" datetime="2020-09-25T15:04:53+08:00">2020-09-25</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/09/25/20200925-%E9%97%AD%E5%8C%85%E8%A3%85%E9%A5%B0%E5%99%A8%E4%B8%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/25/20200925-闭包装饰器与回调函数/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看某一个端口的使用情况</p>
+<p>netstat -anp | grep 8000</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/25/20200925-%E9%97%AD%E5%8C%85%E8%A3%85%E9%A5%B0%E5%99%A8%E4%B8%8E%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/08/28/%E9%AD%94%E6%96%B9%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/28/%E9%AD%94%E6%96%B9%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" class="post-title-link" itemprop="url">'魔方与深度学习的一些思考'</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-28 20:34:54" itemprop="dateCreated datePublished" datetime="2020-08-28T20:34:54+08:00">2020-08-28</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/08/28/%E9%AD%94%E6%96%B9%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/28/魔方与深度学习的一些思考/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很久没更，倒也不是没有时间，实在是太懒了。另外，很久没有写魔方相关的东西，是因为我属实没有时间玩儿，而且自己现在太菜了。</p>
+<p>最近两个月，主要还是在补一些知识，这几天在学深度学习，实在是难以消化。</p>
+<blockquote>
+<p>这里主要是想讲一下，这两天的所思所想，主要还是深度学习与魔方相关联的一些地方。</p>
+</blockquote>
+<p>我们在学习魔方的过程，是与机器学习或者说是深度学习的过程极其相似的，下面请听我分步骤来阐述一下。</p>
+<p>首先是刚开始的学习：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">魔方----我们要建立一个基本的学习框架，也就是了解七步法是怎么样来学习的，定义一个评判的标准，然后像框架中输入一些我们了解的经验，去最终学会魔方。</span><br><span class="line">深度学习----我们还是要建立一个深度学习的最基础的模型，包括输入层，隐藏层，还有输出层，定义评判标准，之后向模型输入数据，让模型学习，最后可以让模型可以起到预测作用。</span><br></pre></td></tr></table></figure>
+
+<p>我们虽然学会了魔方， 但依据现有的评判标准来讲，我觉得现在学的还不够好，所以就要去做优化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">魔方----我们要学习新的方法，接受新的知识，比如CFOP</span><br><span class="line">深度学习----对于基本的模型无法满足我们想要的精度，那么我们就对模型进行更换或者是改进，来达到更好的效果。</span><br></pre></td></tr></table></figure>
+
+<p>之后，我们发现即使学了现有的最好的方法，我们水平还是一般。</p>
+<p>模型参数问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">魔方----可能手法存在问题，对于手法进行纠正，练习。</span><br><span class="line">深度学习----可能是有些参数，设置不是很好，或者是一些参数没有达到最佳，我们可以采用网格搜索或者是随机搜索来进行超参数，找到对于模型最佳的参数。</span><br></pre></td></tr></table></figure>
+
+<p>训练次数问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">魔方----可能是刚刚学会，对于练习的不够，所以我们就需要进行大量的练习。与深度学习相比魔方的数据可以看为是随机生成数据，之后紧接着生成一个解法的label</span><br><span class="line">深度学习----可能是训练次数不够，将训练集epochs增加，来提高模型的准确率。</span><br></pre></td></tr></table></figure>
+
+<p>—–手动分割—–</p>
+<p>模型泛化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">魔方----接着我们发现自己只会白底，但是还想学六色底，之后进行大量的练习。</span><br><span class="line">深度学习----发现当前模型只对某一情况比较好，也就是模型泛化能力不行，所以，要通过一些方法增强模型的泛化能力，可以输入其他情况的数据，就像专门练习六色底的其他面一样。</span><br></pre></td></tr></table></figure>
+
+
+
+<p>还会出现一个情况就是:过拟合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">魔方----自己训练成绩挺好，但是一到比赛成绩不堪入目</span><br><span class="line">深度学习----这就是过拟合的问题，训练成绩很好，一到验证集精度就差很多</span><br></pre></td></tr></table></figure>
+
+<p>以上这种情况，模仿适合深度学习是有些区别的，魔方的这种情况可能是个人问题。</p>
+<p>而对于深度学习来讲，这还是模型泛化能力不够，就是模型拟合的和训练数据集太好了，这就像一个人死学知识，不懂变通。</p>
+<p>这就是我拖了3天作业，一项目实在不想写，又不想闲着刚刚写的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/07/22/%E7%AC%AC20%E5%A4%A9%E7%9A%84python%E4%BD%9C%E4%B8%9A--%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,9 +476,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-22 20:47:14 / 修改时间：20:54:26" itemprop="dateCreated datePublished" datetime="2020-07-22T20:47:14+08:00">2020-07-22</time>
+              <time title="创建时间：2020-07-22 20:47:14" itemprop="dateCreated datePublished" datetime="2020-07-22T20:47:14+08:00">2020-07-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -308,13 +569,6 @@
 
               <time title="创建时间：2020-07-15 19:36:46" itemprop="dateCreated datePublished" datetime="2020-07-15T19:36:46+08:00">2020-07-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-22 22:46:53" itemprop="dateModified" datetime="2020-07-22T22:46:53+08:00">2020-07-22</time>
-              </span>
 
           
   
@@ -391,9 +645,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-12 18:53:30 / 修改时间：22:15:37" itemprop="dateCreated datePublished" datetime="2020-07-12T18:53:30+08:00">2020-07-12</time>
+              <time title="创建时间：2020-07-12 18:53:30" itemprop="dateCreated datePublished" datetime="2020-07-12T18:53:30+08:00">2020-07-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -492,13 +745,6 @@
 
               <time title="创建时间：2020-07-11 15:56:51" itemprop="dateCreated datePublished" datetime="2020-07-11T15:56:51+08:00">2020-07-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-12 19:13:26" itemprop="dateModified" datetime="2020-07-12T19:13:26+08:00">2020-07-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -589,13 +835,6 @@
 
               <time title="创建时间：2020-05-21 14:37:44" itemprop="dateCreated datePublished" datetime="2020-05-21T14:37:44+08:00">2020-05-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-25 22:59:56" itemprop="dateModified" datetime="2020-05-25T22:59:56+08:00">2020-05-25</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -687,13 +926,6 @@
 
               <time title="创建时间：2020-05-15 20:27:25" itemprop="dateCreated datePublished" datetime="2020-05-15T20:27:25+08:00">2020-05-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-18 17:38:45" itemprop="dateModified" datetime="2020-05-18T17:38:45+08:00">2020-05-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -785,9 +1017,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-09 19:33:04 / 修改时间：19:38:17" itemprop="dateCreated datePublished" datetime="2020-05-09T19:33:04+08:00">2020-05-09</time>
+              <time title="创建时间：2020-05-09 19:33:04" itemprop="dateCreated datePublished" datetime="2020-05-09T19:33:04+08:00">2020-05-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -830,285 +1061,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/09/2020-05-09%E5%81%9A%E4%B8%AA%E5%B0%8F%E5%B0%8F%E7%9A%84%E5%86%B3%E5%AE%9A/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/05/07/2020-05-07/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/2020-05-07/" class="post-title-link" itemprop="url">2020.05.07</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-07 17:51:39 / 修改时间：18:07:23" itemprop="dateCreated datePublished" datetime="2020-05-07T17:51:39+08:00">2020-05-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RecordLife/" itemprop="url" rel="index">
-                    <span itemprop="name">RecordLife</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/05/07/2020-05-07/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/07/2020-05-07/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>正在准备考研复试的时候，收到了毕业论文查重的通知，现在压力极大,现在甚至有些手抖。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/07/2020-05-07/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/02/07/Linux-%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/07/Linux-%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux 命令</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-07 17:37:12" itemprop="dateCreated datePublished" datetime="2020-02-07T17:37:12+08:00">2020-02-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-08 18:53:12" itemprop="dateModified" datetime="2020-02-08T18:53:12+08:00">2020-02-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/02/07/Linux-%E5%91%BD%E4%BB%A4/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/07/Linux-命令/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>用到terminal的地方可能会比较多 <code>ctrl + alt + t</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/07/Linux-%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2020/02/03/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/03/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/" class="post-title-link" itemprop="url">固态硬盘</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-03 10:41:56 / 修改时间：11:04:01" itemprop="dateCreated datePublished" datetime="2020-02-03T10:41:56+08:00">2020-02-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%87%E7%BA%A7%E7%94%B5%E8%84%91/" itemprop="url" rel="index">
-                    <span itemprop="name">升级电脑</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/02/03/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/03/固态硬盘/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前两天，买了个威刚万紫千红8G内存条，插到电脑上，一次就找到了，感觉很舒服，想着能在加一块固态岂不是美滋滋。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/03/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1200,7 +1152,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1213,7 +1165,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1255,7 +1207,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Va1id</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.4.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0

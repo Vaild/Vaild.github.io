@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://va1id.top').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="在用数据包的形式进行登录之前，其实我是用selenium已经实现了网站登录后跳转至服务界面，拿到服务界面的JSESSIONID，虽然选用了anaconda进行环境管理在环境移植方面有很大的便利，但是还必须确保具有Chrome以及ChromeDriver的驱动版本也要与Chrome本身的版本相适应，综上来看当前的解决方案是不够优雅，所以想用发送数据的形式来获得最终的JSESSIONID。 通过发数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过发送数据包模拟网站登录">
+<meta property="og:url" content="http://va1id.top/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/index.html">
+<meta property="og:site_name" content="Va1id">
+<meta property="og:description" content="在用数据包的形式进行登录之前，其实我是用selenium已经实现了网站登录后跳转至服务界面，拿到服务界面的JSESSIONID，虽然选用了anaconda进行环境管理在环境移植方面有很大的便利，但是还必须确保具有Chrome以及ChromeDriver的驱动版本也要与Chrome本身的版本相适应，综上来看当前的解决方案是不够优雅，所以想用发送数据的形式来获得最终的JSESSIONID。 通过发数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/LX4jb7BFnQ83SwP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/ngehb8BrH2SoPMm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/MjivwrgIVchzXH2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/Q6o5iCKtZXcLFvN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/I9UC7iSbEgJKL5j.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/MVdpJwuetvEmiaj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/RAZfErDpL5t3N4V.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/NzTI2Y43LMmbftK.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/UGDJIwqaY6XfV51.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/U1IX9klAhVPS8QF.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/wxIyJ154HXS2RuO.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/XHz5MOhv8t1GS3B.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/swDGYtOho7yJ1SN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/JBmuj7tykH1pfN2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/Y6dINfTiBFkRGAc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/ndQChZPsbYf5kzj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/oQAxueFyYpRLrn1.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/e4p7JshKUAVq21j.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/Y8sqUcboZ4dLirp.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/BtQKLUIYnHse9WP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/aZPpb3kXLIEjYi2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/01/WlopM4u2h8NQPLH.png">
+<meta property="article:published_time" content="2022-05-01T05:31:42.000Z">
+<meta property="article:modified_time" content="2022-05-01T05:31:42.000Z">
+<meta property="article:author" content="Va1id">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/05/01/LX4jb7BFnQ83SwP.png">
+
+<link rel="canonical" href="http://va1id.top/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>通过发送数据包模拟网站登录 | Va1id</title>
+  
+
+
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?6c32b36a4183a2dd76aaedfae72afd98";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Va1id</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Va1id">
+      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Va1id">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          通过发送数据包模拟网站登录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-01 13:31:42" itemprop="dateCreated datePublished" datetime="2022-05-01T13:31:42+08:00">2022-05-01</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/通过发送数据包模拟网站登录/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在用数据包的形式进行登录之前，其实我是用selenium已经实现了网站登录后跳转至服务界面，拿到服务界面的<code>JSESSIONID</code>，虽然选用了anaconda进行环境管理在环境移植方面有很大的便利，但是还必须确保具有Chrome以及ChromeDriver的驱动版本也要与Chrome本身的版本相适应，综上来看当前的解决方案是不够优雅，所以想用发送数据的形式来获得最终的<code>JSESSIONID</code>。</p>
+<p>通过发数据包的形式模拟学校信息化门户网站的登录，这里主要是为了下游的任务做准备，这个任务没有什么技术含量，这里只对模拟登录进行简单的记录。</p>
+<a id="more"></a>
+
+<h3 id="查看请求登录页面的数据包"><a href="#查看请求登录页面的数据包" class="headerlink" title="查看请求登录页面的数据包"></a>查看请求登录页面的数据包</h3><blockquote>
+<p>登录页面请求表头</p>
+</blockquote>
+<p>这是请求的表头，可以看到第一次请求，没有cookie情况下不用发送任何cookie信息，(accept这一部分没有截图)</p>
+<p><img src="https://s2.loli.net/2022/05/01/LX4jb7BFnQ83SwP.png" alt="image-20220501082930425"></p>
+<blockquote>
+<p>登陆页面请求响应</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/01/ngehb8BrH2SoPMm.png" alt="image-20220501083140177"></p>
+<p>这里set了一个<code>JSESSIONID</code>的 <code>Cookie</code>，肯定不是我们最终要的，只是在进行验证之前的一个会话的状态。</p>
+<blockquote>
+<p>JS</p>
+</blockquote>
+<p>同时，还在查看数据流的时候发现了一系列js的加载。可以看到<code>jQuery</code>这必须要用到不用看，以及<code>qrcode</code>是二维码相关的也可以不用看，可以看一下<code>des.js</code>、<code>login.js</code>。</p>
+<p><img src="https://s2.loli.net/2022/05/01/MjivwrgIVchzXH2.png" alt="image-20220501083412162"></p>
+<p><img src="https://s2.loli.net/2022/05/01/Q6o5iCKtZXcLFvN.png" alt="image-20220501083425113"></p>
+<p>可以看到<code>des.js</code>应该是用于加解密的。</p>
+<p><img src="https://s2.loli.net/2022/05/01/I9UC7iSbEgJKL5j.png" alt="image-20220501083728977"></p>
+<h3 id="查看登录页面前端"><a href="#查看登录页面前端" class="headerlink" title="查看登录页面前端"></a>查看登录页面前端</h3><blockquote>
+<p>前端表单</p>
+</blockquote>
+<p>首先进入到登录页面，找到向后端传递数据的前端表单。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"loginForm"</span> <span class="attr">action</span>=<span class="string">"/cas/login"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"floor2"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content_login_box"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"login_box_tab"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其实这里有用的东西不太多，还是要向下看</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"login_box_input"</span> <span class="attr">id</span>=<span class="string">"un"</span> <span class="attr">tabindex</span>=<span class="string">"1"</span>  <span class="attr">value</span>=<span class="string">""</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> <span class="attr">placeholder</span>=<span class="string">"用户名"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"login_box_input"</span> <span class="attr">id</span>=<span class="string">"pd"</span> <span class="attr">tabindex</span>=<span class="string">"2"</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> <span class="attr">placeholder</span>=<span class="string">'密码'</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接着向下看，可以看到类似于payload中所携带的数据字段一样， 其中 <code>id=&quot;lt&quot;</code>这个字段会随着页面的重新请求而发生变化。</p>
+<p><del>这里犯了一个错误，因为我请求了好几次都发现<code>name=&quot;execution&quot;</code> 的<code>value=&quot;e1s1&quot;</code>，所以我就在数据包中写死了，但是他是变化的。</del></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"rsa"</span> <span class="attr">name</span>=<span class="string">"rsa"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"ul"</span> <span class="attr">name</span>=<span class="string">"ul"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"pl"</span> <span class="attr">name</span>=<span class="string">"pl"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"lt"</span> <span class="attr">name</span>=<span class="string">"lt"</span> <span class="attr">value</span>=<span class="string">"LT-2995996-cLwZrOclQLw6zgkmNgc4vslKRCGXk7-cas"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"execution"</span> <span class="attr">value</span>=<span class="string">"e1s1"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_eventId"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>分析js</p>
+</blockquote>
+<p>因为在前端的登录按钮 <code>button</code>上没有看到<code>onClick</code>,所以应该是通过刚才的<code>login.js</code>向后传递的数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"login_box_landing_btn"</span>  <span class="attr">id</span>=<span class="string">"index_login_btn"</span>&gt;</span>账号登录</span><br></pre></td></tr></table></figure>
+
+<p>打开数据流的<code>login.js</code>查看，发现了<code>login</code>的函数，这个函数的主要作用就是，拿到前端id为<code>un</code>、<code>pd</code>的值，然后进行计算到，<code>ul</code>、<code>pl</code>以及最重要的<code>rsa</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $u = $(<span class="string">"#un"</span>) , $p=$(<span class="string">"#pd"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> u = $u.val();</span><br><span class="line">	<span class="keyword">if</span>(u==<span class="string">""</span>)&#123;</span><br><span class="line">		$u.focus();</span><br><span class="line">		$u.parent().addClass(<span class="string">"login_error_border"</span>);</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> p = $p.val();</span><br><span class="line">	<span class="keyword">if</span>(p==<span class="string">""</span>)&#123;</span><br><span class="line">		$p.focus();</span><br><span class="line">		$p.parent().addClass(<span class="string">"login_error_border"</span>);</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	$u.attr(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);</span><br><span class="line">	$p.attr(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> lt = $(<span class="string">"#lt"</span>).val();</span><br><span class="line">	</span><br><span class="line">	$(<span class="string">"#ul"</span>).val(u.length);</span><br><span class="line">	$(<span class="string">"#pl"</span>).val(p.length);</span><br><span class="line">	$(<span class="string">"#rsa"</span>).val(strEnc(u+p+lt , <span class="string">'1'</span> , <span class="string">'2'</span> , <span class="string">'3'</span>));</span><br><span class="line"></span><br><span class="line">	$(<span class="string">"#loginForm"</span>)[<span class="number">0</span>].submit();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到<code>rsa</code>的计算通过了<code>strEnc</code>的函数，很眼熟，刚刚在<code>dec.js</code>里看到了。</p>
+<blockquote>
+<p>JS断点调试</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/01/MVdpJwuetvEmiaj.png" alt="image-20220501085429285"></p>
+<p>前端可以存储的js有这几个，没有<code>login.js</code>, 所以退而求其次，只能在<code>dec.js</code>中打断点进行调试，我是打在<code>strEnc</code>这个函数返回的地方，这样他肯定会往回跳到<code>login.js</code>.</p>
+<p><img src="https://s2.loli.net/2022/05/01/RAZfErDpL5t3N4V.png" alt="image-20220501085649853"></p>
+<p>接着点击账号登录的<code>button</code>。</p>
+<p>看到加密的<code>data</code>是<code>username + password + lt</code>，加密后大概是这个样子(有删减)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;81C9A0B423FD7EA55FB64886E9AAA673641A9FA451F32121FB7D22140B14CA95F1AF2D2FC79C19EFF92299C3C06290A516A61AB18534BC42E3ABCBD0E31E94065CB216DA1096824A2F30CCD8C358E72DE68780116D0D15388928E199B233C54B84168C9D93D0997407A3BEA4415AE18BD66399FA40DABD1D7C58AB359&#39;</span><br></pre></td></tr></table></figure>
+
+<p>继续往下跳，果然回到<code>login.js</code></p>
+<p><img src="https://s2.loli.net/2022/05/01/NzTI2Y43LMmbftK.png" alt="image-20220501090101772"></p>
+<p>接下来也不过多的进行分析，直接跳过整个过程，向后端发送计算的数据，查看数据包。</p>
+<h3 id="分析认证的请求数据"><a href="#分析认证的请求数据" class="headerlink" title="分析认证的请求数据"></a>分析认证的请求数据</h3><blockquote>
+<p>post数据流分析</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/01/UGDJIwqaY6XfV51.png" alt="image-20220501090248876"></p>
+<p><strong>request header</strong></p>
+<p><img src="https://s2.loli.net/2022/05/01/U1IX9klAhVPS8QF.png" alt="image-20220501090328275"></p>
+<p><strong>request data</strong></p>
+<p><img src="https://s2.loli.net/2022/05/01/wxIyJ154HXS2RuO.png" alt="image-20220501090435203"></p>
+<p>首先这个包进行了重定向，另外请求包中携带了第一次请求时服务器传来的<code>JSESSIONID</code>，可以看到数据包的字段基本与前面分析的一致。</p>
+<p><strong>response header</strong></p>
+<p><img src="https://s2.loli.net/2022/05/01/XHz5MOhv8t1GS3B.png" alt="image-20220501091013339"></p>
+<p>这里包含了重定向的地址，有几个重要的Cookie用于跨域请求。</p>
+<h3 id="用python实现第一个认证"><a href="#用python实现第一个认证" class="headerlink" title="用python实现第一个认证"></a>用python实现第一个认证</h3><blockquote>
+<p>输入认证的简单信息</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/01/swDGYtOho7yJ1SN.png" alt="image-20220501091220888"></p>
+<blockquote>
+<p>dec.js </p>
+</blockquote>
+<p>这个我起初是想用python直接运行这个js文件的，但是需要nodejs环境，也不说我没有，但是把又要有这个环境就显得很不优雅，所以我用python实现了这个js里面的所有的功能， 大概有800多行代码也不是很多。但是一步一步验证关键数据的过程是很复杂的，在浏览器断点调试与python一起，借用<code>operator.eq()</code>判断两个值是不是相同，写倒是没花多长时间，主要验证的时间比较多。起初我以为这是最麻烦的一步了，但是我还是太天真了。</p>
+<p><img src="https://s2.loli.net/2022/05/01/JBmuj7tykH1pfN2.png" alt="image-20220501091435220"></p>
+<blockquote>
+<p>第一次访问登陆页面以及数据获取</p>
+</blockquote>
+<p><strong>request header</strong></p>
+<p>直接复制就可以，这里有一个小技巧，就是可以在chrome复制到postman里面，然后转python代码。</p>
+<p><img src="https://s2.loli.net/2022/05/01/Y6dINfTiBFkRGAc.png" alt="image-20220501092028775"></p>
+<p>这是一个get请求，也不用什么特别的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url=self.url, headers=headers, data=payload)</span><br></pre></td></tr></table></figure>
+
+<p><strong>这个请求最重要的是response</strong></p>
+<p>要拿到里面的cookie、lt、execution、_enventId这些东西</p>
+<ul>
+<li>cookie是最好拿到的</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cookies = list(response.cookies)</span><br><span class="line">self.cookie_adx = cookies[<span class="number">1</span>].name + <span class="string">"="</span> + cookies[<span class="number">1</span>].value</span><br><span class="line">self.jsessionid = cookies[<span class="number">2</span>].name + <span class="string">"="</span> + cookies[<span class="number">2</span>].value</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>lt</li>
+</ul>
+<p>在返回的html页面中，需要用正则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">regex = re.search(<span class="string">r'LT-.*-cas'</span>, str(response.content.decode(<span class="string">'utf-8'</span>)))</span><br><span class="line">self.lt = regex.group(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>execution、_enventId</li>
+</ul>
+<p>也是在html页面，很相似</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">excure = re.search(<span class="string">r'name="execution".*"'</span>, str(response.content.decode(<span class="string">'utf-8'</span>)))</span><br><span class="line">excall = excure.group(<span class="number">0</span>)</span><br><span class="line">self.execution = excall[<span class="number">-5</span>:<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">envent = re.search(<span class="string">r'name="_eventId".*"'</span>, str(response.content.decode(<span class="string">'utf-8'</span>)))</span><br><span class="line">enventall = envent.group(<span class="number">0</span>)</span><br><span class="line">self._eventId = enventall[<span class="number">-7</span>:<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>登录数据包的构造与发送</p>
+</blockquote>
+<ul>
+<li>header</li>
+</ul>
+<p>直接复制， 但是要修改其中的cookie部分。</p>
+<p><img src="https://s2.loli.net/2022/05/01/ndQChZPsbYf5kzj.png" alt="image-20220501132833128"></p>
+<ul>
+<li>对<code>username+password+lt</code>进行加密</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/01/oQAxueFyYpRLrn1.png" alt="image-20220501093135196"></p>
+<ul>
+<li>构造payload data</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">f'rsa=<span class="subst">&#123;self.rsa&#125;</span>&amp;ul=<span class="subst">&#123;self.ul&#125;</span>&amp;pl=<span class="subst">&#123;self.pl&#125;</span>&amp;lt=<span class="subst">&#123;self.lt&#125;</span>&amp;execution=<span class="subst">&#123;self.execution&#125;</span>&amp;_eventId=<span class="subst">&#123;self._eventId&#125;</span>'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>发送数据包</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = requests.post(self.url, data=payload, headers=headers, verify=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从以上请求的response拿数据</p>
+</blockquote>
+<p>首先，通过浏览器的数据已经明确的知道这是一个重定向的请求，另外已经知道设置了4个<code>cookie</code>其中有两个用于跨域的身份认证。</p>
+<p>但是在这里出现了问题，我一直得到的是<code>response status 200</code>而不是<code>302</code>，同时有<code>302</code>的<code>response</code>但是收到的cookie的数量不对，也不包含<code>Location</code>，这里反过头来去检查加密以及数据的问题，发现可能存在的两个问题。</p>
+<ul>
+<li>execution、_enventId的可能变化</li>
+<li>data构造，起初我使用的是字典，后来变成了字符串直接构造</li>
+</ul>
+<p>这里还是会收到<code>200</code>状态码，但是history中是存在<code>302</code>的这种就可以</p>
+<p><img src="https://s2.loli.net/2022/05/01/e4p7JshKUAVq21j.png" alt="image-20220501093940926"></p>
+<p><img src="https://s2.loli.net/2022/05/01/Y8sqUcboZ4dLirp.png" alt="image-20220501094001196"></p>
+<p><strong>同时我们只关注<code>history</code>中的数据就可以了</strong></p>
+<p>在<code>response.headers._store</code> 中看到拿到了所有想要的<code>cookie</code></p>
+<p><img src="https://s2.loli.net/2022/05/01/BtQKLUIYnHse9WP.png" alt="image-20220501094302394"></p>
+<p>将<code>Cookie</code>保留下来</p>
+<p><img src="https://s2.loli.net/2022/05/01/aZPpb3kXLIEjYi2.png" alt="image-20220501094400746"></p>
+<p>到这里就拿到了所有想要的身份认证的信息。</p>
+<h3 id="分析对下游服务的请求和身份认证"><a href="#分析对下游服务的请求和身份认证" class="headerlink" title="分析对下游服务的请求和身份认证"></a>分析对下游服务的请求和身份认证</h3><p>还是通过浏览器先对包进行分析， 但是这个跨域请求存在页面跳转，所以使用了抓包软件<code>fiddle classic</code>进行抓包分析。</p>
+<p><strong>发现要携带一个<code>ticket</code></strong></p>
+<p>当然这是重定向得到的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply.html?ticket&#x3D;ST-23367-GdGrhNopWhjmXSUL-cas</span><br></pre></td></tr></table></figure>
+
+<p>大概过程是这样：</p>
+<p>通过携带我们上面身份信息，去请求服务。而这个服务是通过下面的方式进行。通过这个拿到一个类似令牌一样的<code>ticket</code>实现身份认证的内容，然后拿到一个固定的<code>cookie</code>进行接下来的认证。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?service&#x3D;http:&#x2F;&#x2F;XXX.XXX</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="python获取服务认证ID"><a href="#python获取服务认证ID" class="headerlink" title="python获取服务认证ID"></a>python获取服务认证ID</h3><ul>
+<li>header</li>
+</ul>
+<p>其中 <code>self.formCookies[3]</code>是上一次拿到的最重要的一个身份认证的信息。</p>
+<p><img src="https://s2.loli.net/2022/05/01/WlopM4u2h8NQPLH.png" alt="image-20220501100031581"></p>
+<ul>
+<li>发送数据包</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serviceResponse = self.session.get(url=serviceUrl, headers=simpleHeader, allow_redirects=<span class="literal">True</span>, verify=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>因为这也是一个重定向的，所以不用考虑中间拿到的<code>ticket</code>的过程，只要在history中的<code>302</code>的信息中拿到这个服务的<code>JSESSIONID</code>就可以。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">appCookie = dict(serviceResponse.history[<span class="number">1</span>].cookies)</span><br><span class="line">finalCookie = <span class="string">"JSESSIONID="</span> + appCookie.get(<span class="string">"JSESSIONID"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后通过<code>finalCookie</code>就可以完成下游任务了。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Va1id
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://va1id.top/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/" title="通过发送数据包模拟网站登录">http://va1id.top/2022/05/01/通过发送数据包模拟网站登录/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" rel="prev" title="打家劫舍问题简单总结">
+      <i class="fa fa-chevron-left"></i> 打家劫舍问题简单总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/" rel="next" title="认识JWT">
+      认识JWT <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看请求登录页面的数据包"><span class="nav-number">1.</span> <span class="nav-text">查看请求登录页面的数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看登录页面前端"><span class="nav-number">2.</span> <span class="nav-text">查看登录页面前端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析认证的请求数据"><span class="nav-number">3.</span> <span class="nav-text">分析认证的请求数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用python实现第一个认证"><span class="nav-number">4.</span> <span class="nav-text">用python实现第一个认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析对下游服务的请求和身份认证"><span class="nav-number">5.</span> <span class="nav-text">分析对下游服务的请求和身份认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python获取服务认证ID"><span class="nav-number">6.</span> <span class="nav-text">python获取服务认证ID</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Va1id"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Va1id</p>
+  <div class="site-description" itemprop="description">记录转行这一路的艰辛，做计算机和数据结构学习的分享者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vaild" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vaild" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sinvalid@icloud.com" title="E-Mail → sinvalid@icloud.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Va1id</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" 
+src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js">
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://valid.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "http://va1id.top/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/",
+            identifier: "2022/05/01/通过发送数据包模拟网站登录/",
+            title: "通过发送数据包模拟网站登录"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://valid.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
