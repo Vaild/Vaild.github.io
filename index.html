@@ -1,1223 +1,308 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://va1id.top').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.6.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
-  <meta name="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Va1id</title><meta name="author" content="Va1id"><meta name="copyright" content="Va1id"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Va1id">
 <meta property="og:url" content="http://va1id.top/index.html">
 <meta property="og:site_name" content="Va1id">
 <meta property="og:description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="Va1id">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://va1id.top/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: true,
-    isPost: false
-  };
-</script>
-
-  <title>Va1id</title>
-  
-
-
-  <script>
-	var _hmt = _hmt || [];
-	(function() {
-  	var hm = document.createElement("script");
-  	hm.src = "https://hm.baidu.com/hm.js?6c32b36a4183a2dd76aaedfae72afd98";
-  	var s = document.getElementsByTagName("script")[0]; 
-  	s.parentNode.insertBefore(hm, s);
-	})();
-</script>
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://va1id.top/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Va1id',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-08-19 20:22:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Va1id</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/" class="post-title-link" itemprop="url">AOP面向切面简单Demo</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-15 16:35:59" itemprop="dateCreated datePublished" datetime="2022-08-15T16:35:59+08:00">2022-08-15</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/08/15/AOP面向切面简单Demo/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/08/14/%E8%AE%A4%E8%AF%86JWT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/" class="post-title-link" itemprop="url">认识JWT</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-14 21:40:49" itemprop="dateCreated datePublished" datetime="2022-08-14T21:40:49+08:00">2022-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-19 15:46:18" itemprop="dateModified" datetime="2022-08-19T15:46:18+08:00">2022-08-19</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/08/14/认识JWT/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本篇将包含以下内容：</p>
-<ul>
-<li>什么是<code>JWT</code>？</li>
-<li><code>JWT</code>的组成</li>
-<li>如何使用JWT进行认证？</li>
-<li><code>JWT</code>的优缺点</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/" class="post-title-link" itemprop="url">通过发送数据包模拟网站登录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-01 13:31:42 / 修改时间：13:34:12" itemprop="dateCreated datePublished" datetime="2022-05-01T13:31:42+08:00">2022-05-01</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/01/通过发送数据包模拟网站登录/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在用数据包的形式进行登录之前，其实我是用selenium已经实现了网站登录后跳转至服务界面，拿到服务界面的<code>JSESSIONID</code>，虽然选用了anaconda进行环境管理在环境移植方面有很大的便利，但是还必须确保具有Chrome以及ChromeDriver的驱动版本也要与Chrome本身的版本相适应，综上来看当前的解决方案是不够优雅，所以想用发送数据的形式来获得最终的<code>JSESSIONID</code>。</p>
-<p>通过发数据包的形式模拟学校信息化门户网站的登录，这里主要是为了下游的任务做准备，这个任务没有什么技术含量，这里只对模拟登录进行简单的记录。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">打家劫舍问题简单总结</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-02 10:00:47 / 修改时间：10:03:06" itemprop="dateCreated datePublished" datetime="2022-04-02T10:00:47+08:00">2022-04-02</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/02/打家劫舍问题简单总结/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="打家劫舍问题"><a href="#打家劫舍问题" class="headerlink" title="打家劫舍问题"></a>打家劫舍问题</h2><blockquote>
-<p>不能偷相邻的两家</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">完全背包问题总结</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-30 21:46:46 / 修改时间：21:47:50" itemprop="dateCreated datePublished" datetime="2022-03-30T21:46:46+08:00">2022-03-30</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/30/完全背包问题总结/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="完全背包问题总结"><a href="#完全背包问题总结" class="headerlink" title="完全背包问题总结"></a>完全背包问题总结</h2><blockquote>
-<p>每个物品是无限制的</p>
-</blockquote>
-<p>也包括组合问题，排列问题：<strong>排列问题背包在外层遍历，组合问题物品在外层遍历。</strong></p>
-<ul>
-<li><strong>与01背包问题最大的不同是</strong>，因为一个物品可以装多次，&#x3D;&#x3D;<strong>背包从前往后遍历</strong>&#x3D;&#x3D;。</li>
-<li><strong>组合问题不强调顺序，排列问题强调元素之间的顺序。</strong></li>
-</ul>
-<p><img src="https://s2.loli.net/2022/03/30/4HpTmsQX7IGYLlM.png" alt="image-20220330110040999"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">01背包问题简单总结</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-29 23:22:07 / 修改时间：23:50:36" itemprop="dateCreated datePublished" datetime="2022-03-29T23:22:07+08:00">2022-03-29</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/29/01背包问题简单总结/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="01背包问题总结"><a href="#01背包问题总结" class="headerlink" title="01背包问题总结"></a>01背包问题总结</h2><blockquote>
-<p>每个物品只能用一次</p>
-</blockquote>
-<p>包括组合问题，排列问题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/" class="post-title-link" itemprop="url">生物特征识别-指静脉识别</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-19 21:59:31" itemprop="dateCreated datePublished" datetime="2021-06-19T21:59:31+08:00">2021-06-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-02 22:18:55" itemprop="dateModified" datetime="2021-07-02T22:18:55+08:00">2021-07-02</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/06/19/生物特征识别-指静脉识别/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这个项目，将包含以下流程：ROI提取、图像增强、简单训练。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/05/14/plt-savefig%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E7%A9%BA%E7%99%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/14/plt-savefig%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E7%A9%BA%E7%99%BD/" class="post-title-link" itemprop="url">plt.savefig保存图片空白</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-14 09:51:11 / 修改时间：09:59:50" itemprop="dateCreated datePublished" datetime="2021-05-14T09:51:11+08:00">2021-05-14</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/05/14/plt-savefig%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E7%A9%BA%E7%99%BD/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/05/14/plt-savefig保存图片空白/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>原来代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line">plt.bar(xlist, ylist)</span><br><span class="line">plt.show()</span><br><span class="line">plt.savefig(path+<span class="string">&#x27;.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/14/plt-savefig%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E7%A9%BA%E7%99%BD/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/05/11/%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%94%A8%E6%88%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/11/%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%94%A8%E6%88%B7/" class="post-title-link" itemprop="url">配置实验室用户</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-11 09:59:16 / 修改时间：10:01:49" itemprop="dateCreated datePublished" datetime="2021-05-11T09:59:16+08:00">2021-05-11</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/05/11/%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%94%A8%E6%88%B7/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/05/11/配置实验室用户/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><code>centos 包括了建立用户、添加到sudoers、安装虚拟环境virtualenv</code></p>
-<h3 id="建立一个新的用户"><a href="#建立一个新的用户" class="headerlink" title="建立一个新的用户"></a>建立一个新的用户</h3><p>建立用户, 用adduser可以在home下建立文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser wb</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/11/%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%94%A8%E6%88%B7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://va1id.top/2021/04/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Va1id">
-      <meta itemprop="description" content="记录转行这一路的艰辛，做计算机和数据结构学习的分享者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Va1id">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/" class="post-title-link" itemprop="url">Java多线程-1</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-04-25 14:36:48 / 修改时间：14:37:10" itemprop="dateCreated datePublished" datetime="2021-04-25T14:36:48+08:00">2021-04-25</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2021/04/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/04/25/Java多线程-1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h2><h3 id="进程与线程的理解"><a href="#进程与线程的理解" class="headerlink" title="进程与线程的理解"></a>进程与线程的理解</h3><h3 id="多线程的实现"><a href="#多线程的实现" class="headerlink" title="多线程的实现"></a>多线程的实现</h3><ul>
-<li>Thread类–继承</li>
-<li>Runable接口–实现</li>
-<li>Callable接口–实现</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Va1id"
-      src="/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">Va1id</p>
-  <div class="site-description" itemprop="description">记录转行这一路的艰辛，做计算机和数据结构学习的分享者</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">35</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">18</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/vaild" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vaild" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/sinvalid@icloud.com" title="E-Mail → sinvalid@icloud.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Va1id</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Va1id</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/" title="AOP面向切面简单Demo"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AOP面向切面简单Demo"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/" title="AOP面向切面简单Demo">AOP面向切面简单Demo</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-15T08:35:59.000Z" title="发表于 2022-08-15 16:35:59">2022-08-15</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/" title="认识JWT"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="认识JWT"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/" title="认识JWT">认识JWT</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-14T13:40:49.000Z" title="发表于 2022-08-14 21:40:49">2022-08-14</time></span></div><div class="content">本篇将包含以下内容：
+
+什么是JWT？
+JWT的组成
+如何使用JWT进行认证？
+JWT的优缺点
 
 
 
-      </div>
+什么是JWT？JWT (Json Web Token) 是一种基于Token的认证授权机制。可以看到JWT本身就是一种Token。JWT是目前最流行的跨域解决方案。
+Token本身携带信息，不需要想Session一样在服务器端保存session状态信息，而实现真正的无状态。
+JWT的组成？JWT本身是一串字符串，但是其中包含了以下的信息：
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Va1id</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
-  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" 
-src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js">
-</script>
-
-        
+Header
+type： JWT
+alg： signature使用 什么加密算法，比如HS256
 
 
+Payload： 主要是一些data信息，也包括自身可以携带的比如签发者、签发日期、过期时间等等信息。
+Signature：通过Header、Payload以及存在服务器上的secret，使用Header中的加密算法alg进行加密得到的签名。
+
+Pre:  Header   +  Payload 
+After: Base64(Header).Base64(Payload).HS256(Base64(Header).Base64(Payload),  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/" title="通过发送数据包模拟网站登录"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="通过发送数据包模拟网站登录"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/" title="通过发送数据包模拟网站登录">通过发送数据包模拟网站登录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-05-01T05:31:42.000Z" title="发表于 2022-05-01 13:31:42">2022-05-01</time></span></div><div class="content">在用数据包的形式进行登录之前，其实我是用selenium已经实现了网站登录后跳转至服务界面，拿到服务界面的JSESSIONID，虽然选用了anaconda进行环境管理在环境移植方面有很大的便利，但是还必须确保具有Chrome以及ChromeDriver的驱动版本也要与Chrome本身的版本相适应，综上来看当前的解决方案是不够优雅，所以想用发送数据的形式来获得最终的JSESSIONID。
+通过发数据包的形式模拟学校信息化门户网站的登录，这里主要是为了下游的任务做准备，这个任务没有什么技术含量，这里只对模拟登录进行简单的记录。
+
+
+查看请求登录页面的数据包
+登录页面请求表头
+
+这是请求的表头，可以看到第一次请求，没有cookie情况下不用发送任何cookie信息，(accept这一部分没有截图)
+
+
+登陆页面请求响应
+
+
+这里set了一个JSESSIONID的 Cookie，肯定不是我们最终要的，只是在进行验证之前的一个会话的状态。
+
+JS
+
+同时，还在查看数据流的时候发现了一系列js的加载。可以看到jQuery这必须要用到不用看，以及qrcode是二维码相关的也可以不用看，可以看一下de ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="打家劫舍问题简单总结"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="打家劫舍问题简单总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="打家劫舍问题简单总结">打家劫舍问题简单总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-02T02:00:47.000Z" title="发表于 2022-04-02 10:00:47">2022-04-02</time></span></div><div class="content">打家劫舍问题
+不能偷相邻的两家
 
 
 
+198. 打家劫舍
+dp定义：在到第i家所获得的最大收益是dp[i]
+状态转移方程：取下面两者的最大值， dp[i][j] = Math.max(dp[i-2] + nums[i], dp[i-1])
+如果我选择当前第i家的话， 那就不能偷前一家也就是只能是，dp[i-2] + nums[i]
+如果我不偷当前一家的话，那就本次没有收益，和在在第i-1家的收益相同， dp[i-1]
 
 
+初始化： 只有一家那就偷这一家，dp[0] = nums[0], 如果有两家，就选最大的一家偷，dp[1] = Math.max(nums[0], nums[1])
+本质上还是看从哪一家先偷比较好
 
-      </div>
-    </footer>
-  </div>
+12345678910111213class Solution &#123;    public int rob(int[] nums) &#123;        int n = nums.length;        if (n &lt;= 1) return nums[0];        int[] dp = new int[n];        dp[0] =  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="完全背包问题总结"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="完全背包问题总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="完全背包问题总结">完全背包问题总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-30T13:46:46.000Z" title="发表于 2022-03-30 21:46:46">2022-03-30</time></span></div><div class="content">完全背包问题总结
+每个物品是无限制的
 
-  
-  
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+也包括组合问题，排列问题：排列问题背包在外层遍历，组合问题物品在外层遍历。
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-  <script defer src="/lib/three/three.min.js"></script>
-
-
-  
+与01背包问题最大的不同是，因为一个物品可以装多次，&#x3D;&#x3D;背包从前往后遍历&#x3D;&#x3D;。
+组合问题不强调顺序，排列问题强调元素之间的顺序。
 
 
 
 
+组合问题有多少种方法。
+
+递推公式： dp[j] = dp[j] + dp[j - nums[i]]
+初始化： dp[0] = 1
+外层遍历物品，内层遍历背包
+
+遍历模板：
+12345for(int i = 0; i &lt; coins.length; i++)&#123;    for (int j = coins[i]; j &lt;= amount; j++)&#123;        dp[j] = dp[j] + dp[j-coins[i]];    &#125;&#125;
 
 
 
+518. 零钱兑换 II12345678910111213class Solution &#123;    public int change(int amount, int[] coins) &#123 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="01背包问题简单总结"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="01背包问题简单总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/29/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="01背包问题简单总结">01背包问题简单总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-29T15:22:07.000Z" title="发表于 2022-03-29 23:22:07">2022-03-29</time></span></div><div class="content">01背包问题总结
+每个物品只能用一次
+
+包括组合问题，排列问题。
+
+
+遍历顺序模板
+一般的dp数组定义是：
+
+容量为j的背包的可以凑成的子集的总和
+容量为j的背包的可以凑成的目标和的个数
+
+一般是先遍历物品，再遍历背包，而且因为每个物品只能放入一次，所以背包从后向前遍历
+123456for (int i = 0; i &lt; stones.length; i++)&#123;    for (int j = bagsize; j &gt;= stones[i]; j--)&#123;       // dp[j] = Math.max(dp[j], dp[j-stones[i]] + stones[i]);       // 状态转移公式    &#125;&#125;
 
 
 
+普通01背包问题状态转移公式一般为： dp[j] = Math.max(dp[j], dp[j-nums[i]] + nums[i])
+416. 分割等和子集
+dp数组含义是，在容量为i的背包中，能装下的最多东西是dp[i]
+
+123456789101112131415161718class Solution  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/" title="生物特征识别-指静脉识别"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="生物特征识别-指静脉识别"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/19/%E7%94%9F%E7%89%A9%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB-%E6%8C%87%E9%9D%99%E8%84%89%E8%AF%86%E5%88%AB/" title="生物特征识别-指静脉识别">生物特征识别-指静脉识别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-19T13:59:31.000Z" title="发表于 2021-06-19 21:59:31">2021-06-19</time></span></div><div class="content">这个项目，将包含以下流程：ROI提取、图像增强、简单训练。
+
+
+ROI提取提取流程这里ROI做的比较简单，主要就是通过canny算子提取图像边缘，这个时候会产生很多的噪声边，所以要通过一些规则进行约束，才能使提取到的ROI有真正的作用。
+因为图像本身存在曝光等方面的差异，所以要对其进行形态学的腐蚀与膨胀来让图像的轮廓更加清晰。
+主要的流程如下：
+
+
+提取效果
+
+
+这个ROI提取的流程存在一个问题：没有进行角度的矫正，以及最后得到的图片的size是不同的。
+图像增强增强流程在图像增强方面，首先尝试了在指静脉识别领域传统的方法，从尺度归一化、直方图均衡化、阈值分割、细化，发现经过细化之后的图像质量还有识别效果都不是很好。所以又进行了进一步的尝试，还是从文献中得到了另外一个传统的方法–方向谷型检测，这个的效果会比之前的好上很多，这里采用了论文中的8方向的一个方向向量，去对这个图片进行卷积，最终得到方向最大的那个向量。方向谷型检测是对整个图像的处理帮助很大，除此之外还有其他的方法协助增强图像，具体流程如下：
+
+
+注:红圈中的是我所用的。
+
+方向谷型检测我看在网上没有对方向谷型检测有详细的介绍的 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/05/14/plt-savefig%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E7%A9%BA%E7%99%BD/" title="plt.savefig保存图片空白"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="plt.savefig保存图片空白"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/14/plt-savefig%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E7%A9%BA%E7%99%BD/" title="plt.savefig保存图片空白">plt.savefig保存图片空白</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-14T01:51:11.000Z" title="发表于 2021-05-14 09:51:11">2021-05-14</time></span></div><div class="content">原来代码
+1234plt.figure(figsize=(10, 10))plt.bar(xlist, ylist)plt.show()plt.savefig(path+&#x27;.jpg&#x27;)
 
 
 
+在plt.show()展示完之后，plt实际已经产生了一个新的空白图片，所以保存的就是一片空白。
+所以在plt.show()之前进行保存就可以。
+1234plt.figure(figsize=(10, 10))plt.bar(xlist, ylist)plt.savefig(path+&#x27;.jpg&#x27;)plt.show()
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/05/11/%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%94%A8%E6%88%B7/" title="配置实验室用户"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="配置实验室用户"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/11/%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%94%A8%E6%88%B7/" title="配置实验室用户">配置实验室用户</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-11T01:59:16.000Z" title="发表于 2021-05-11 09:59:16">2021-05-11</time></span></div><div class="content">centos 包括了建立用户、添加到sudoers、安装虚拟环境virtualenv
+建立一个新的用户建立用户, 用adduser可以在home下建立文件夹
+1sudo adduser wb
 
 
-  
 
-  
+添加密码
+1sudo passwd wb
 
-  
+将用户添加到sudoers
+123456789# 先更改sudoers的写权限chmod 777 /etc/sudoers# 更改sudoers文件vi /etc/sudoers# 向root下面添加wbroot	ALL=(ALL)		ALLwb		ALL=(ALL)		ALL# 再改回sudoers权限chmod 440 /etc/sudoers
 
-<script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://valid.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
+安装vim
+1yum -y install vim*
 
-</body>
-</html>
+安装虚拟环境安装virtualenv， virtualenvwrapper1pip install virtualenv
+
+1pip install virtualenvwrapper
+
+配置在当前用户下添加文件夹 .virtualenvs
+1mkdir ./.virtualenvs
+
+在当前的.bashrc中添加
+
+这里面的export VIR ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/04/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/" title="Java多线程-1"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java多线程-1"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/25/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/" title="Java多线程-1">Java多线程-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-25T06:36:48.000Z" title="发表于 2021-04-25 14:36:48">2021-04-25</time></span></div><div class="content">Java多线程进程与线程的理解多线程的实现
+Thread类–继承
+Runable接口–实现
+Callable接口–实现
+
+
+
+Thread类
+建立一个线程对像
+开启多线程
+
+1234567891011121314151617181920public class threadstest extends Thread&#123;    //    有两种创建线程的方法    //    第一种就是通过继承 Thread 然后重写run的方法    @Override    public void run()&#123;        for (int i = 0; i&lt;100; i++)&#123;            System.out.println(&quot;这里是多线程----------------run&quot;);        &#125;    &#125;    public static void main(String[] args) &#123;//        建立一个多线程中的实例        threadstest thread = new ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Va1id</div><div class="author-info__description">记录转行这一路的艰辛，做计算机和数据结构学习的分享者</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/" title="AOP面向切面简单Demo"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AOP面向切面简单Demo"/></a><div class="content"><a class="title" href="/2022/08/15/AOP%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%AE%80%E5%8D%95Demo/" title="AOP面向切面简单Demo">AOP面向切面简单Demo</a><time datetime="2022-08-15T08:35:59.000Z" title="发表于 2022-08-15 16:35:59">2022-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/" title="认识JWT"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="认识JWT"/></a><div class="content"><a class="title" href="/2022/08/14/%E8%AE%A4%E8%AF%86JWT/" title="认识JWT">认识JWT</a><time datetime="2022-08-14T13:40:49.000Z" title="发表于 2022-08-14 21:40:49">2022-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/" title="通过发送数据包模拟网站登录"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="通过发送数据包模拟网站登录"/></a><div class="content"><a class="title" href="/2022/05/01/%E9%80%9A%E8%BF%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A8%A1%E6%8B%9F%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95/" title="通过发送数据包模拟网站登录">通过发送数据包模拟网站登录</a><time datetime="2022-05-01T05:31:42.000Z" title="发表于 2022-05-01 13:31:42">2022-05-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="打家劫舍问题简单总结"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="打家劫舍问题简单总结"/></a><div class="content"><a class="title" href="/2022/04/02/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/" title="打家劫舍问题简单总结">打家劫舍问题简单总结</a><time datetime="2022-04-02T02:00:47.000Z" title="发表于 2022-04-02 10:00:47">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="完全背包问题总结"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="完全背包问题总结"/></a><div class="content"><a class="title" href="/2022/03/30/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="完全背包问题总结">完全背包问题总结</a><time datetime="2022-03-30T13:46:46.000Z" title="发表于 2022-03-30 21:46:46">2022-03-30</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/RecordLife/"><span class="card-category-list-name">RecordLife</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/markdown/"><span class="card-category-list-name">markdown</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/"><span class="card-category-list-name">python</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%87%E7%BA%A7%E7%94%B5%E8%84%91/"><span class="card-category-list-name">升级电脑</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%91%A8%E6%8A%A5/"><span class="card-category-list-name">周报</span><span class="card-category-list-count">3</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Git/" style="font-size: 1.1em; color: #999">Git</a> <a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 1.3em; color: #99a1ac">Java基础</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/MySql/" style="font-size: 1.2em; color: #999da3">MySql</a> <a href="/tags/RecordLife/" style="font-size: 1.4em; color: #99a5b6">RecordLife</a> <a href="/tags/leetcode/" style="font-size: 1.3em; color: #99a1ac">leetcode</a> <a href="/tags/markdown/" style="font-size: 1.1em; color: #999">markdown</a> <a href="/tags/python/" style="font-size: 1.5em; color: #99a9bf">python</a> <a href="/tags/%E5%8D%87%E7%BA%A7%E7%94%B5%E8%84%91/" style="font-size: 1.1em; color: #999">升级电脑</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 1.3em; color: #99a1ac">周报</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/" style="font-size: 1.3em; color: #99a1ac">复杂网络</a> <a href="/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" style="font-size: 1.2em; color: #999da3">思维导图</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 1.1em; color: #999">日记</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.2em; color: #999da3">机器学习</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">深度学习</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 1.1em; color: #999">语法</a> <a href="/tags/%E8%BD%AC%E8%A1%8C/" style="font-size: 1.2em; color: #999da3">转行</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">四月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">三月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">35</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-08-19T12:22:24.423Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Va1id</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
