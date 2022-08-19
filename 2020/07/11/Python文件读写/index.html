@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -55,7 +55,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/07/12/A5kqT1Yvis2pV3d.png">
 <meta property="article:published_time" content="2020-07-11T07:56:51.000Z">
-<meta property="article:modified_time" content="2020-07-11T07:56:51.000Z">
+<meta property="article:modified_time" content="2020-07-12T11:13:26.334Z">
 <meta property="article:author" content="Va1id">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="转行">
@@ -223,6 +223,13 @@
 
               <time title="创建时间：2020-07-11 15:56:51" itemprop="dateCreated datePublished" datetime="2020-07-11T15:56:51+08:00">2020-07-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-12 19:13:26" itemprop="dateModified" datetime="2020-07-12T19:13:26+08:00">2020-07-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -261,18 +268,18 @@
 
       
         <p>对于Python的文件读写的思维导图和一些代码。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://i.loli.net/2020/07/12/A5kqT1Yvis2pV3d.png" alt="文件"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读文件夹的深度优先遍历</span></span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(path)</span>:</span></span><br><span class="line">    list = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> lsit:</span><br><span class="line">        print(i)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(path + <span class="string">'/'</span> + i):</span><br><span class="line">            DFS(path + <span class="string">'/'</span> + i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">           	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读文件夹的深度优先遍历</span></span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">DFS</span>(<span class="params">path</span>):</span><br><span class="line">    <span class="built_in">list</span> = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> lsit:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(path + <span class="string">&#x27;/&#x27;</span> + i):</span><br><span class="line">            DFS(path + <span class="string">&#x27;/&#x27;</span> + i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">           	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于实现对于大文件的复制</span></span><br><span class="line"><span class="comment"># 采用逐行复制，是因为大文件的如果直接采用read进行，对于内存占用较大</span></span><br><span class="line">file_source = open(<span class="string">'readme'</span>, mode=<span class="string">'r'</span>)</span><br><span class="line">file = open(<span class="string">'readme1'</span>, mode=<span class="string">'w+'</span>,encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    text_source = file_source.readline()</span><br><span class="line">    file.write(text_source)</span><br><span class="line">    <span class="keyword">if</span> len(text_source) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">file_source.close()</span><br><span class="line">file.close()</span><br><span class="line">file = open(<span class="string">'readme'</span>, mode=<span class="string">'r'</span>)</span><br><span class="line">x = file.read()</span><br><span class="line">print(x)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于实现对于大文件的复制</span></span><br><span class="line"><span class="comment"># 采用逐行复制，是因为大文件的如果直接采用read进行，对于内存占用较大</span></span><br><span class="line">file_source = <span class="built_in">open</span>(<span class="string">&#x27;readme&#x27;</span>, mode=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;readme1&#x27;</span>, mode=<span class="string">&#x27;w+&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    text_source = file_source.readline()</span><br><span class="line">    file.write(text_source)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(text_source) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">file_source.close()</span><br><span class="line">file.close()</span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;readme&#x27;</span>, mode=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">x = file.read()</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a+ 如果存在则将光标放到最后再写，如果不存在则创建新的再进行写入</span></span><br><span class="line"><span class="comment"># r+ 如果存在则进行覆盖，不写的话则不进行覆盖，如果不存在则报错</span></span><br><span class="line"><span class="comment"># w+ 如果存在则进行覆盖，即使不想其中写入任何的东西也会被空白文件覆盖，如果不存在则创建新的文件</span></span><br><span class="line">file = open(<span class="string">'readme'</span>,mode=<span class="string">'a+'</span>)</span><br><span class="line">file.write(<span class="string">'\ntest'</span>)</span><br><span class="line">x = file.read()</span><br><span class="line">print(x)</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">100</span>)</span><br><span class="line"><span class="comment"># 有很多重复的测试主要是用于理解a+，r+以及w+的一些区别</span></span><br><span class="line"><span class="comment"># 在测试完之后，发现在w+和a+模式下并不能将其中的内容读取出来=====不知道是不是我的问题</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a+ 如果存在则将光标放到最后再写，如果不存在则创建新的再进行写入</span></span><br><span class="line"><span class="comment"># r+ 如果存在则进行覆盖，不写的话则不进行覆盖，如果不存在则报错</span></span><br><span class="line"><span class="comment"># w+ 如果存在则进行覆盖，即使不想其中写入任何的东西也会被空白文件覆盖，如果不存在则创建新的文件</span></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;readme&#x27;</span>,mode=<span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">file.write(<span class="string">&#x27;\ntest&#x27;</span>)</span><br><span class="line">x = file.read()</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;-&#x27;</span>*<span class="number">100</span>)</span><br><span class="line"><span class="comment"># 有很多重复的测试主要是用于理解a+，r+以及w+的一些区别</span></span><br><span class="line"><span class="comment"># 在测试完之后，发现在w+和a+模式下并不能将其中的内容读取出来=====不知道是不是我的问题</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -386,7 +393,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思维导图"><span class="nav-number">1.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -457,7 +464,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Va1id</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0

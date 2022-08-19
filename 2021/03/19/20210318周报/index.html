@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -54,7 +54,7 @@
 <meta property="og:description" content="[TOC]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-19T01:01:45.000Z">
-<meta property="article:modified_time" content="2021-03-19T01:01:45.000Z">
+<meta property="article:modified_time" content="2021-03-19T01:06:20.844Z">
 <meta property="article:author" content="Va1id">
 <meta property="article:tag" content="周报">
 <meta name="twitter:card" content="summary">
@@ -216,8 +216,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-19 09:01:45" itemprop="dateCreated datePublished" datetime="2021-03-19T09:01:45+08:00">2021-03-19</time>
+              <time title="创建时间：2021-03-19 09:01:45 / 修改时间：09:06:20" itemprop="dateCreated datePublished" datetime="2021-03-19T09:01:45+08:00">2021-03-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,32 +258,34 @@
 
       
         <p>[TOC]</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="深度强化学习"><a href="#深度强化学习" class="headerlink" title="深度强化学习"></a>深度强化学习</h2><ul>
 <li><p>加深对Sarsa和QLearning的理解，并进行实现</p>
 <p>Sarsa和QLearning的区别：Sarsa在更新的时候，一直使用的一定是下次自己执行的行为策略。但是QLearning在更新表的时候一直用的是不一定是下次用的策略，下次采用的一定是表现最好的策略。on-policy 一般使用一个策略进行加值迭代 eposilon-greedy； off-policy 一般有两个策略，使用eposilon-greedy选择动作，使用贪婪更新价值函数。他们在实现的过程中，表现为更新公式不同：</p>
 <p>Sarsa：</p>
-<p>$ Q(S_t, A_t) = Q(S_t, A_t) + \alpha [reward + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)] $</p>
+<p>$ Q(S_t, A_t) &#x3D; Q(S_t, A_t) + \alpha [reward + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)] $</p>
 <p>QLearning</p>
-<p>$ Q(S_t, A_t) = Q(S_t, A_t) + \alpha [reward + \gamma *maxQ(S_{t+1}, a) - Q(S_t, A_t)] $</p>
+<p>$ Q(S_t, A_t) &#x3D; Q(S_t, A_t) + \alpha [reward + \gamma *maxQ(S_{t+1}, a) - Q(S_t, A_t)] $</p>
 </li>
-</ul>
-<ul>
 <li><p>DQN 深度Q 网络，理解了DQN当中的经验池、经验回放、还有固定Q目标，这个经验回放的目的就是因为我们在神经网络中训练的数据一般是要求独立的，所以我们把我们这种有时序联系的数据放进去随机并且也保存了过去的经验，固定Q目标值的目的，因为在DQN中是有两个网络，一个网络用来做实时的预测，另外一个网络是上一个网络的一个深拷贝，他的输出是作为训练的一个目标，但是如果这个目标一直在变的话会让算法的不稳定性变高，所以DQN采用以一定的时间频率去更新这个生成目标值的网络，增强DQN的稳定性。</p>
 <p>还没有完成实现，实现的时候选择了百度的parl作为框架，他是将其分为了model这里指的就是神经网络、agent、algorithm因为强化学习针对不同的任务代码可重用性比较低所以里面并不是具体的代码而是每种方法的框架需要对其中的方法进行重写、replayMemory经验回放这几个模块。</p>
 </li>
 </ul>
 <h2 id="关于研究方向"><a href="#关于研究方向" class="headerlink" title="关于研究方向"></a>关于研究方向</h2><p>因为进行强化学习的数据，他是要求要具备马尔科夫性的，所以在开始之前，我觉得首先要能够证明数据具有马尔科夫性，这个我在一篇文章中看到了关于网络演化数据是具备马尔可夫性的证明。</p>
 <h2 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h2><p><strong>Cheap Talk, Reinforcement Learning, and the Emergence of Cooperation</strong>，2015</p>
-<pre><code>这篇文章给出的问题是：人们以前认为cheap talk（空谈博弈，给出的信息没有什么价值，容易伪造，很不可靠，不可验证性）在群体中没有办法支持合作的出现，是不是真的？
-
- 方法是：通过强化学习展示了在cheap talk演化之下的社会网络模型，具体如下。
-
-文章先讲了意了一些传统的产生社团的一些机制：1.具有可靠的信息交流或者是可信度很高的信号 2.惩罚机制 3.共同遵守相同的规范 4.互惠互利的利他主义等等。接下来引用其他论文指出那种具有可靠的信息的信号也不是很重要，来引入cheap talk这种没有什么参考价值的不可验证的信号。
-
-本文用的是RE模型进行加强，用Polya urn 瓦罐模型（可以看为从一个罐子里面放不同的球，来抽球）来模拟抽到的策略是不可信的不可验证的，那么通过所选的策略的回报进行加强（假如抽中a的回报是4，那么就往罐子中放入4个a的球），这其中还用了一个叫折扣的机制（就是可以遗忘过去的一些被封锁的一些信号或者说策略），像强化学习里面的利用与探索，使其仍然具有探索的能力，最后发现通过这种条件，最终仍然可以生成社团。</code></pre><p><strong>A computational reward learning account of social</strong>，2021</p>
-<pre><code>这篇文章的起初提出的问题就是我们在社交媒体中是基于奖励来做出行为的，尽管有这种说法但是没有具体证据。最后结果表明人类在社交媒体上的行为在质量和数量上都符合奖励学习的原则。文章是研究社交媒体中的奖励对人在社交媒体上行为的影响，并不是关于网络建模方向的，所以就看了看这篇文章在强化学习的部分，数据采用的是多个平台的发帖时序数据，采用policy-gradient的算法，因为有利于学习具有连续动作空间的问题。</code></pre><p><strong>无模型强化学习综述</strong></p>
+<pre><code> 这篇文章给出的问题是：人们以前认为cheap talk（空谈博弈，给出的信息没有什么价值，容易伪造，很不可靠，不可验证性）在群体中没有办法支持合作的出现，是不是真的？
+ 
+  方法是：通过强化学习展示了在cheap talk演化之下的社会网络模型，具体如下。
+ 
+ 文章先讲了意了一些传统的产生社团的一些机制：1.具有可靠的信息交流或者是可信度很高的信号 2.惩罚机制 3.共同遵守相同的规范 4.互惠互利的利他主义等等。接下来引用其他论文指出那种具有可靠的信息的信号也不是很重要，来引入cheap talk这种没有什么参考价值的不可验证的信号。
+ 
+ 本文用的是RE模型进行加强，用Polya urn 瓦罐模型（可以看为从一个罐子里面放不同的球，来抽球）来模拟抽到的策略是不可信的不可验证的，那么通过所选的策略的回报进行加强（假如抽中a的回报是4，那么就往罐子中放入4个a的球），这其中还用了一个叫折扣的机制（就是可以遗忘过去的一些被封锁的一些信号或者说策略），像强化学习里面的利用与探索，使其仍然具有探索的能力，最后发现通过这种条件，最终仍然可以生成社团。
+</code></pre>
+<p><strong>A computational reward learning account of social</strong>，2021</p>
+<pre><code> 这篇文章的起初提出的问题就是我们在社交媒体中是基于奖励来做出行为的，尽管有这种说法但是没有具体证据。最后结果表明人类在社交媒体上的行为在质量和数量上都符合奖励学习的原则。文章是研究社交媒体中的奖励对人在社交媒体上行为的影响，并不是关于网络建模方向的，所以就看了看这篇文章在强化学习的部分，数据采用的是多个平台的发帖时序数据，采用policy-gradient的算法，因为有利于学习具有连续动作空间的问题。
+</code></pre>
+<p><strong>无模型强化学习综述</strong></p>
 <p>文章介绍了监督学习、无监督学习以及强化学习的不同之处，指出有模型强化学习相较于无模型强化学习的不足，主要以无模型强化学习算法以及进展展开,。</p>
 <ol>
 <li><p>模型化强化学习他不与环境进行交互，难以处理高维问题。并且若是存在模型误差，其性能将远低于无模型强化学习。</p>
@@ -412,7 +415,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#深度强化学习"><span class="nav-number">1.</span> <span class="nav-text">深度强化学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于研究方向"><span class="nav-number">2.</span> <span class="nav-text">关于研究方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文"><span class="nav-number">3.</span> <span class="nav-text">论文</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">深度强化学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-number">2.</span> <span class="nav-text">关于研究方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BA%E6%96%87"><span class="nav-number">3.</span> <span class="nav-text">论文</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -483,7 +486,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Va1id</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.6.0
